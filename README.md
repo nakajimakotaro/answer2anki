@@ -1,54 +1,65 @@
-# React + TypeScript + Vite
+# Answer2Anki
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 概要
 
-Currently, two official plugins are available:
+Answer2Ankiは、Ankiと連携し、問題演習とその解答（特に手書きの解答用紙）を効率的に管理するためのElectronアプリケーションです。AnkiConnectアドオンを利用してAnkiと通信します。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 主な機能
 
-## Expanding the ESLint configuration
+*   Ankiデッキから問題（ノート）を取得して表示します。
+*   問題に対応する解答用紙（画像ファイル）をAnkiカードの裏面フィールドに関連付けて保存・表示します。
+*   ノートのリスト表示、検索（将来的に実装予定）。
+*   AnkiConnectへの接続設定とテスト。
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 使用技術
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+*   [Electron](https://www.electronjs.org/)
+*   [React](https://reactjs.org/)
+*   [TypeScript](https://www.typescriptlang.org/)
+*   [Vite](https://vitejs.dev/)
+*   [Tailwind CSS](https://tailwindcss.com/)
+*   [AnkiConnect API](https://github.com/FooSoft/anki-connect)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## セットアップ手順
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 前提条件
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+*   [Anki](https://apps.ankiweb.net/) がインストールされ、起動していること。
+*   [AnkiConnect](https://ankiweb.net/shared/info/2055492159) アドオンがAnkiにインストールされ、有効になっていること。
+
+### インストールと起動
+
+1.  **リポジトリをクローン:**
+    ```bash
+    git clone <リポジトリURL>
+    cd answer2anki
+    ```
+
+2.  **依存関係をインストール:**
+    ```bash
+    npm install
+    ```
+
+3.  **開発環境で起動:**
+    ```bash
+    npm run dev
+    ```
+    これにより、Electronアプリケーションが開発モードで起動します。
+
+4.  **ビルド (配布用):**
+    ```bash
+    npm run build
+    ```
+    ビルドされたアプリケーションは `dist` ディレクトリに出力されます。
+
+## 使い方 (概要)
+
+1.  アプリケーションを起動します。
+2.  必要に応じて設定画面でAnkiConnectの接続を確認します。
+3.  サイドバーからデッキを選択し、問題リストを表示します。
+4.  問題を選択すると、表面（問題文）が表示されます。
+5.  解答用紙の画像をアップロードすると、Ankiカードの裏面に関連付けられます。
+
+## ライセンス
+
+MIT License
